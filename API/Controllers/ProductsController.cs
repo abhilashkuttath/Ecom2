@@ -14,9 +14,8 @@ using AutoMapper;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[Controller]")]
-    public class ProductsController :ControllerBase
+    
+    public class ProductsController :BaseApiController
     {
     //    private readonly IProductRepository _repo;
         

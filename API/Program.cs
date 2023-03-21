@@ -41,6 +41,15 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 });
 
 
+builder.Services.AddCors(opt => 
+{
+    opt.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+    });
+});
+
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
@@ -55,6 +64,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles(); // position is imporettant
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 

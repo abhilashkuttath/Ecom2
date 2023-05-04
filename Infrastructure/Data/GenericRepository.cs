@@ -7,6 +7,7 @@ using Core.Interfaces;
 using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Infrastructure.Data
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
@@ -33,7 +34,8 @@ namespace Infrastructure.Data
        
          public async Task<T> GetEntityWithSpec(ISpecification<T> spec)
         {
-            return await ApplySpecification(spec).FirstOrDefaultAsync();
+             return await ApplySpecification(spec).FirstOrDefaultAsync();
+            
         }
          public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
         {

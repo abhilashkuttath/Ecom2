@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using API.Dtos;
 using AutoMapper;
 using API.Helpers;
+using API.Errors;
 
 namespace API.Controllers
 {
@@ -70,6 +71,12 @@ namespace API.Controllers
              var product= await _productRepo.GetEntityWithSpec(spec);
              
 
+
+            if(product == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+            
 
               return _mapper.Map<Product, ProductToReturnDto>(product);
 
